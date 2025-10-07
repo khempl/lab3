@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab1</title>
+    <style>
+        .border{
+            border: 1px solid black;
+            padding: 5px;
+        }
+        table{
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+
+    <section>
+    </section>
+
+    <div class="card"></div>
+    <div class="card"></div>
+
+
+    <script>
+        let customers = [
+            {
+                'id': 1,
+                'f_name': 'Abby',
+                'l_name': 'Thomas',
+                'gender': 'M',
+                'married': true,
+                'age': 32,
+                'expense': 500,
+                'purchased': ['Shampoo', 'Toys', 'Book']
+            },
+            {
+                'id': 2,
+                'f_name': 'Jerry',
+                'l_name': 'Tom',
+                'gender': 'M',
+                'married': true,
+                'age': 64,
+                'expense': 100,
+                'purchased': ['Stick', 'Blade']
+            },
+            {
+                'id': 3,
+                'f_name': 'Dianna',
+                'l_name': 'Cherry',
+                'gender': 'F',
+                'married': true,
+                'age': 22,
+                'expense': 1500,
+                'purchased': ['Lipstik', 'Nail Polish', 'Bag', 'Book']
+            },
+            {
+                'id': 4,
+                'f_name': 'Dev',
+                'l_name': 'Currian',
+                'gender': 'M',
+                'married': true,
+                'age': 82,
+                'expense': 90,
+                'purchased': ['Book']
+            },
+            {
+                'id': 5,
+                'f_name': 'Maria',
+                'l_name': 'Gomes',
+                'gender': 'F',
+                'married': false,
+                'age': 7,
+                'expense': 300,
+                'purchased': ['Toys']
+            }
+        ];
+
+        const table = document.createElement('table');
+        const headers = Object.keys(customers[0]);
+        const thead = document.createElement('thead');
+
+        for (header of headers) {
+            const th = document.createElement('th');
+            th.textContent = header;
+            th.classList.add('border');
+            thead.append(th);
+        }
+
+        table.append(thead);
+
+        for (customer of customers) {
+            const row = document.createElement('tr')
+            for (header of headers) {
+                const td = document.createElement('td');
+                td.textContent = customer[header];
+                td.classList.add('border');
+                row.append(td);
+            }
+            table.append(row);
+        }
+        document.body.append(table);
+
+
+
+        const div = document.querySelectorAll('.card');
+        const cus1 = customers[0];
+        div[0].textContent = cus1.f_name + ' ' + cus1.l_name;
+        if (cus1.married == true){
+            cus1.married = 'married';
+        }
+        else{
+            cus1.married = "don't married";
+        }
+        div[1].textContent = cus1.age + ', ' + cus1.married;
+
+        const section = document.getElementsByTagName('section');
+        section.append(div[0], div[1]);
+
+        document.body.append(section);
+
+    </script>
+</body>
+</html>
